@@ -9,6 +9,8 @@ setup:
         N8N_BASIC_AUTH_PASSWORD: pass
         PGSSLMODE: require
         NODE_TLS_REJECT_UNAUTHORIZED: 0
+        EXECUTIONS_DATA_PRUNE: true
+        EXECUTIONS_DATA_MAX_AGE: 24
 
 build:
     docker:
