@@ -10,7 +10,7 @@ setup:
         PGSSLMODE: require
         NODE_TLS_REJECT_UNAUTHORIZED: 0
         EXECUTIONS_DATA_PRUNE: true
-        EXECUTIONS_DATA_MAX_AGE: 24
+        EXECUTIONS_DATA_MAX_AGE: 3
 
 build:
     docker:
