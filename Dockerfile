@@ -5,7 +5,7 @@ ARG N8N_VERSION=0.171.0
 
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata
-RUN apk --update add fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr gconf-dev libxscrnsaver libc6-compat
+RUN apk --update add fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver libc6-compat
 
 # Set a custom user to not have n8n run as root
 USER root
