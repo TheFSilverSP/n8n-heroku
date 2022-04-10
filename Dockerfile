@@ -13,7 +13,7 @@ USER root
 # Install n8n and the also temporary all the packages
 # it needs to build it correctly.
 RUN apk --update add --virtual build-dependencies python3 build-base && \
-	npm_config_user=root npm install -g n8n@${N8N_VERSION} lodash puppeteer browserless && \
+	npm_config_user=root npm install -g n8n@${N8N_VERSION} lodash puppeteer@13.2.0 browserless@1.51.0 && \
 	apk del build-dependencies
 
 # Specifying work directory
