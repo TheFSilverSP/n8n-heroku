@@ -5,6 +5,7 @@ ARG N8N_VERSION=0.171.0
 
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata
+RUN npm install -g puppeteer
 
 # Set a custom user to not have n8n run as root
 USER root
@@ -14,8 +15,6 @@ USER root
 RUN apk --update add --virtual build-dependencies python3 build-base && \
 	npm_config_user=root npm install -g n8n@${N8N_VERSION} && \
 	apk del build-dependencies
-	
-RUN npm install -g puppeteer
 
 # Specifying work directory
 WORKDIR /data
