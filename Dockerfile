@@ -5,7 +5,7 @@ ARG N8N_VERSION=0.171.0
 
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata
-RUN apk --update add chromium freetype harfbuzz ca-certificates ttf-freefont fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver libc6-compat gcompat at-spi2-core alsa-lib mesa-gbm libxcomposite libxkbcommon libdrm at-spi2-atk atk nspr nss
+RUN apk --update add chromium freetype harfbuzz ca-certificates ttf-freefont fontconfig pango-dev libxcursor libxdamage cups-libs dbus-libs libxrandr libxscrnsaver libc6-compat gcompat at-spi2-core alsa-lib mesa-gbm libxcomposite libxkbcommon libdrm at-spi2-atk atk nspr nss libxshmfence
 
 # Set a custom user to not have n8n run as root
 USER root
