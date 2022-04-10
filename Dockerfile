@@ -5,7 +5,7 @@ ARG N8N_VERSION=0.171.0
 
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata
-RUN npm install -g puppeteer
+RUN npm install -g puppeteer@13.5.2
 
 # Set a custom user to not have n8n run as root
 USER root
