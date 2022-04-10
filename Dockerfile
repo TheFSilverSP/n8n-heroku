@@ -14,7 +14,7 @@ USER root
 RUN apk --update add --virtual build-dependencies python3 build-base && \
 	npm_config_user=root npm install -g n8n@${N8N_VERSION} && \
 	apk del build-dependencies && \
-	npm install puppeteer
+	npm_config_user=root npm install puppeteer
 
 # Specifying work directory
 WORKDIR /data
