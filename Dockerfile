@@ -15,8 +15,12 @@ RUN apk --update add --virtual build-dependencies python3 build-base && \
 	npm_config_user=root npm install -g n8n@${N8N_VERSION} puppeteer && \
 	apk del build-dependencies
 
+WORKDIR /usr/local/lib/node_modules/n8n
+
+RUN npm install puppeteer
+
 # Specifying work directory
-WORKDIR /data
+WORKDIR ../../../../../data
 
 # copy start script to container
 COPY ./start.sh /
