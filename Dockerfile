@@ -17,7 +17,7 @@ RUN apk --update add --virtual build-dependencies python3 build-base && \
 
 WORKDIR /usr/local/lib/node_modules/n8n
 
-RUN npm install browserless puppeteer --save
+RUN npm install browserless puppeteer lodash @octokit/core -g
 
 # Specifying work directory
 WORKDIR ../../../../../data
