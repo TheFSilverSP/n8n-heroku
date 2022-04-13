@@ -15,7 +15,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/local/lib/node_modules/chromium/lib/chromium/
 # Install n8n and the also temporary all the packages
 # it needs to build it correctly.
 RUN apk --update add --virtual build-dependencies python3 build-base && \
-	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless puppeteer lodash chromium && \
+	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless puppeteer@13.4.1 lodash chromium && \
 	apk del build-dependencies
 
 # Specifying work directory
