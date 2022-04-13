@@ -9,6 +9,9 @@ RUN apk add --update graphicsmagick tzdata chromium chromium-chromedriver
 # Set a custom user to not have n8n run as root
 USER root
 
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/local/lib/node_modules/chromium/lib/chromium/chrome-linux/chrome
+
 # Install n8n and the also temporary all the packages
 # it needs to build it correctly.
 RUN apk --update add --virtual build-dependencies python3 build-base && \
