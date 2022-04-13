@@ -11,19 +11,19 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 
 RUN yarn add puppeteer@13.4.1
 
-# Add user so we don't need --no-sandbox.
-RUN addgroup -S pptruser && adduser -S -G pptruser pptruser \
-    && mkdir -p /home/pptruser/Downloads /app \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /app
+RUN addgroup -S root && \
+    mkdir -p /home/root/Downloads /app && \
+    chown -R root:root /home/root && \
+    chown -R root:root /app && \
+    chown -R root:root /usr/local/lib/node_modules/chromium
 
-# Run everything after as non-privileged user.
-USER pptruser
+# Set a custom user to not have n8n run as root
+USER root
 
 # Install n8n and the also temporary all the packages
 # it needs to build it correctly.
 RUN apk --update add --virtual build-dependencies python3 build-base && \
-	npm_config_user=pptruser npm install -g n8n@${N8N_VERSION} browserless lodash chromium && \
+	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless lodash chromium && \
 	apk del build-dependencies
 
 # Specifying work directory
