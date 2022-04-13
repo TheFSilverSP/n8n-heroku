@@ -11,7 +11,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 
 RUN yarn add puppeteer@13.4.1
 
-RUN mkdir -p /home/root/Downloads /app && \
+RUN mkdir -p /home/root/Downloads /app /usr/local/lib/node_modules/chromium && \
     chown -R root:root /home/root && \
     chown -R root:root /app && \
     chown -R root:root /usr/local/lib/node_modules/chromium
