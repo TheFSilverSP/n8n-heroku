@@ -6,7 +6,7 @@ ARG N8N_VERSION=0.172.0
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata chromium
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true && \
 	PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Set a custom user to not have n8n run as root
