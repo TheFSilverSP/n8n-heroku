@@ -4,7 +4,7 @@ FROM node:lts-alpine
 ARG N8N_VERSION=0.172.0
 
 # Update everything and install needed dependencies
-RUN apk add --update graphicsmagick tzdata nss freetype harfbuzz ca-certificates ttf-freefont chromium chromium-chromedriver
+RUN apk add --update graphicsmagick tzdata nss freetype harfbuzz ca-certificates ttf-freefont chromium chromium-chromedriver libc6 libc6-compat gcompat
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 	PUPPETEER_EXECUTABLE_PATH=/usr/local/lib/node_modules/chromium/lib/chromium/chrome-linux/chrome
