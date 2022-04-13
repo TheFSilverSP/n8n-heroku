@@ -6,6 +6,7 @@ ARG N8N_VERSION=0.172.0
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata chromium
 
+# Set puppeteer environment variables
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
@@ -15,8 +16,12 @@ USER root
 # Install n8n and the also temporary all the packages
 # it needs to build it correctly.
 RUN apk --update add --virtual build-dependencies python3 build-base && \
-	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless puppeteer puppeteer-extra puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir puppeteer-extra-plugin-stealth lodash && \
+	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless puppeteer lodash && \
 	apk del build-dependencies
+
+# Install puppeteer extra plugins
+RUN npm_config_user=root npm install -g puppeteer-extra puppeteer-extra-plugin-stealth
+RUN npm_config_user=root npm install -g puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
 
 # Specifying work directory
 WORKDIR /data
