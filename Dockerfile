@@ -4,20 +4,26 @@ FROM node:lts-alpine
 ARG N8N_VERSION=0.172.0
 
 # Update everything and install needed dependencies
-RUN apk add --update graphicsmagick tzdata
-
-# Set a custom user to not have n8n run as root
-USER root
-
-RUN apk add --update chromium chromium-chromedriver
+RUN apk add --update graphicsmagick tzdata chromium nss freetype harfbuzz ca-certificates ttf-freefont yarn
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
 	PUPPETEER_EXECUTABLE_PATH=/usr/local/lib/node_modules/chromium/lib/chromium/chrome-linux/chrome
 
+RUN yarn add puppeteer@13.4.1
+
+RUN addgroup -S root && adduser -S -G root root \
+    && mkdir -p /home/root/Downloads /app \
+    && chown -R root:root /home/root \
+    && chown -R root:root /app
+    && chown -R pptruser:pptruser /usr/local/lib/node_modules/chromium
+
+# Set a custom user to not have n8n run as root
+USER root
+
 # Install n8n and the also temporary all the packages
 # it needs to build it correctly.
 RUN apk --update add --virtual build-dependencies python3 build-base && \
-	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless puppeteer@13.4.1 lodash chromium && \
+	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless lodash chromium && \
 	apk del build-dependencies
 
 # Specifying work directory
