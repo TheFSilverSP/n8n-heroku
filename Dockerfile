@@ -20,8 +20,8 @@ RUN apk --update add --virtual build-dependencies python3 build-base && \
 	apk del build-dependencies
 
 # Install puppeteer extra plugins
-RUN npm_config_user=root npm install -g puppeteer-extra puppeteer-extra-plugin-stealth
-RUN npm_config_user=root npm install -g puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
+RUN npm_config_user=root npm install -g puppeteer-extra puppeteer-extra-plugin-user-preferences
+RUN npm_config_user=root npm install -g puppeteer-extra-plugin-stealth puppeteer-extra-plugin-user-data-dir 
 
 # Specifying work directory
 WORKDIR /data
