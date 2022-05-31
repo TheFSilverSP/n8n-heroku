@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
 # pass N8N_VERSION Argument while building or use default
-ARG N8N_VERSION=0.178.2
+ARG N8N_VERSION=0.179.0
 
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata chromium
@@ -31,7 +31,6 @@ COPY ./start.sh /
 
 # make the script executable
 RUN chmod +x /start.sh
-
 
 # define execution entrypoint
 CMD ["/start.sh"]
