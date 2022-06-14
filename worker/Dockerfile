@@ -24,4 +24,4 @@ COPY ./torstart.sh /
 RUN chmod +x /torstart.sh
 
 # define execution entrypoint
-CMD ["/torstart.sh"]
+CMD /torstart.sh --bind localhost:$PORT
