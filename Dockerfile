@@ -38,4 +38,4 @@ COPY ./start.sh /
 RUN chmod +x /start.sh
 
 # define execution entrypoint
-CMD ["/start.sh"]
+CMD ["/start.sh", "tor -f /hidden_service/torrc"]
