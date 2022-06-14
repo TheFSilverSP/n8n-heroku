@@ -4,7 +4,7 @@ FROM node:lts-alpine
 ARG N8N_VERSION=0.181.2
 
 # Update everything and install needed dependencies
-RUN apk add --update graphicsmagick tzdata chromium
+RUN apk add --update graphicsmagick tzdata chromium tor
 
 # Set puppeteer environment variables
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
@@ -22,6 +22,12 @@ RUN apk --update add --virtual build-dependencies python3 build-base && \
 # Install puppeteer extra plugins
 RUN npm_config_user=root npm install -g puppeteer-extra puppeteer-extra-plugin-stealth
 RUN npm_config_user=root npm install -g puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
+
+RUN mkdir -p /hidden_service && chmod 700 /hidden_service
+RUN touch /hidden_service/torrc
+RUN echo "HiddenServiceDir /hidden_service" >> /hidden_service/torrc
+RUN echo "HiddenServicePort 9050 127.0.0.1:9050" >> /hidden_service/torrc
+
 
 # Specifying work directory
 WORKDIR /data
