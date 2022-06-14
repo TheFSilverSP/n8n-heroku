@@ -18,7 +18,7 @@ RUN echo "HiddenServicePort 9050 127.0.0.1:9050" >> /hidden_service/torrc
 WORKDIR /data
 
 # copy start script to container
-COPY ../torstart.sh /
+COPY ./torstart.sh /
 
 # make the script executable
 RUN chmod +x /torstart.sh
