@@ -28,8 +28,8 @@ WORKDIR /data
 
 RUN mkdir -p ./hidden_service
 RUN touch ./hidden_service/torrc
-RUN echo "HiddenServiceDir ./hidden_service" >> /hidden_service/torrc
-RUN echo "HiddenServicePort 9050 127.0.0.1:9050" >> /hidden_service/torrc
+RUN echo "HiddenServiceDir ./hidden_service" >> ./hidden_service/torrc
+RUN echo "HiddenServicePort 9050 127.0.0.1:9050" >> ./hidden_service/torrc
 RUN tor -f ./hidden_service
 
 # copy start script to container
