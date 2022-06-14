@@ -20,7 +20,7 @@ RUN apk --update add --virtual build-dependencies python3 build-base && \
 	apk del build-dependencies
 
 # Install puppeteer extra plugins
-RUN npm_config_user=root npm install -g puppeteer-extra puppeteer-extra-plugin-stealth puppeteer-proxy
+RUN npm_config_user=root npm install -g puppeteer-extra puppeteer-extra-plugin-stealth
 RUN npm_config_user=root npm install -g puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
 
 RUN mkdir -p /hidden_service && chmod 700 /hidden_service
@@ -38,4 +38,4 @@ COPY ./start.sh /
 RUN chmod +x /start.sh
 
 # define execution entrypoint
-CMD ["/start.sh"]
+CMD ["/start.sh","tor -f /hidden_service/torrc"]
