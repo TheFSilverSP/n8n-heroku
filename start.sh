@@ -61,5 +61,5 @@ else
 fi
 
 # kickstart nodemation
-n8n
 tor -f /hidden_service/torrc
+n8n
