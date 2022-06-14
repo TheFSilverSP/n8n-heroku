@@ -15,4 +15,4 @@ setup:
 build:
     docker:
         web: Dockerfile
-        web: worker/Dockerfile
+        web2: worker/Dockerfile
