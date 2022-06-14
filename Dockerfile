@@ -26,6 +26,11 @@ RUN npm_config_user=root npm install -g puppeteer-extra-plugin-user-preferences 
 # Specifying work directory
 WORKDIR /data
 
+RUN mkdir -p /hidden_service
+RUN echo "HiddenServiceDir ./hidden_service" >> /hidden_service/torrc
+RUN echo "HiddenServicePort 9050 127.0.0.1:9050" >> /hidden_service/torrc
+RUN tor -f ./hidden_service
+
 # copy start script to container
 COPY ./start.sh /
 
