@@ -16,12 +16,12 @@ USER root
 # Install n8n and the also temporary all the packages
 # it needs to build it correctly.
 RUN apk --update add --virtual build-dependencies python3 build-base && \
-	npm_config_user=root npm install -g n8n@${N8N_VERSION} browserless puppeteer lodash && \
+	npm_config_user=root npm install n8n@${N8N_VERSION} browserless puppeteer lodash && \
 	apk del build-dependencies
 
 # Install puppeteer extra plugins
-RUN npm_config_user=root npm install -g puppeteer-extra puppeteer-extra-plugin-stealth
-RUN npm_config_user=root npm install -g puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
+RUN npm_config_user=root npm install puppeteer-extra puppeteer-extra-plugin-stealth
+RUN npm_config_user=root npm install puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
 
 # Tor Setup
 RUN mkdir -p /hidden_service && chmod 700 /hidden_service
