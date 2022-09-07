@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 
 # pass N8N_VERSION Argument while building or use default
-ARG N8N_VERSION=0.193.3
+ARG N8N_VERSION=0.193.4
 
 # Update everything and install needed dependencies
 RUN apk add --update graphicsmagick tzdata chromium tor && \
