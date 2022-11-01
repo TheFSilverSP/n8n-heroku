@@ -4,7 +4,7 @@ FROM node:lts-alpine
 ARG N8N_VERSION=0.200.1
 
 # Update everything and install needed dependencies
-RUN apk add --update graphicsmagick tzdata chromium tor && \
+RUN apk add --update graphicsmagick tzdata chromium tor xvfb && \
 	apk add --no-cache bash git openssh
 
 # Set puppeteer environment variables
