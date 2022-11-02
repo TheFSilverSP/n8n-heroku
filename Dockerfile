@@ -22,6 +22,7 @@ RUN apk --update add --virtual build-dependencies python3 build-base && \
 
 # Install puppeteer extra plugins
 RUN npm_config_user=root npm install --location=global puppeteer-extra puppeteer-extra-plugin-stealth xvfb secret-agent @secret-agent/chrome-88-0
+RUN npx install-browser-deps
 RUN npm_config_user=root npm install --location=global puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
 
 # Tor Setup
