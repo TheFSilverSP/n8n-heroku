@@ -1,10 +1,10 @@
 FROM node:lts-alpine
 
 # pass N8N_VERSION Argument while building or use default
-ARG N8N_VERSION=0.200.1
+ARG N8N_VERSION=0.201.0
 
 # Update everything and install needed dependencies
-RUN apk add --update graphicsmagick tzdata chromium tor xvfb && \
+RUN apk add --update graphicsmagick tzdata chromium tor && \
 	apk add --no-cache bash git openssh
 
 # Set puppeteer environment variables
@@ -21,8 +21,7 @@ RUN apk --update add --virtual build-dependencies python3 build-base && \
 	apk del build-dependencies
 
 # Install puppeteer extra plugins
-RUN npm_config_user=root npm install --location=global puppeteer-extra puppeteer-extra-plugin-stealth xvfb secret-agent @secret-agent/chrome-88-0
-RUN $(npx install-browser-deps)
+RUN npm_config_user=root npm install --location=global puppeteer-extra puppeteer-extra-plugin-stealth
 RUN npm_config_user=root npm install --location=global puppeteer-extra-plugin-user-preferences puppeteer-extra-plugin-user-data-dir 
 
 # Tor Setup
